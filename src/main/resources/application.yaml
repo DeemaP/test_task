@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: test-task
+
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1
+    username: username
+    password:
+
+  h2:
+    console:
+      enabled: false
+
+  elasticsearch:
+    uris: http://localhost:9200
+
+camunda:
+  bpm:
+    database:
+      type: h2
+    job-execution:
+      enabled: false
