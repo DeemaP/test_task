@@ -23,6 +23,6 @@ public class ScoringRequestDto {
     private int region;
 
     @NotNull(message = "Organization capital must not be null.")
-    @DecimalMin(value = "10000.0", message = "Organization capital must be equal 10000 or greater.")
+    @DecimalMin(value = "10000.0", message = "Organization capital must be greater than or equal to 10000.")
     private BigDecimal capital;
 }

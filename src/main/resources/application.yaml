@@ -30,3 +30,11 @@ camunda:
       type: h2
     job-execution:
       enabled: false
+
+scoring-variables:
+    is-ip-key: "isIp"
+    is-resident-key: "isResident"
+    region-key: "region"
+    capital-key: "capital"
+    non-resident-prefix: "9909"
+    ip-inn-length: 12

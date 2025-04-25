@@ -27,6 +27,6 @@ public class ScoringController {
     @Operation(summary = "Get organization score.", description = "Put organization info JSON to get score.")
     public ResponseEntity<ScoringResponseDto> getCompanyScore(@Valid @RequestBody ScoringRequestDto requestDto) {
         log.info("Requesting score for '{}'", requestDto);
-        return ResponseEntity.ok(scoringService.scoreCompany(requestDto));
+        return ResponseEntity.ok(scoringService.scoreOrg(requestDto));
     }
 }
