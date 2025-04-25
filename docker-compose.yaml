@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  elasticsearch:
+    image: bitnami/elasticsearch:7.17.26
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "9200:9200"
+
+  app:
+    build: .
+    container_name: scoring-app
+    depends_on:
+      - elasticsearch
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_ELASTICSEARCH_URIS=http://elasticsearch:9200
