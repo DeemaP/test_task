@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:camunda="http://camunda.org/schema/1.0/dmn" id="Definitions_18egsqn" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="4.12.0">
+  <decision id="scoring-decision" name="Scoring Decision">
+    <decisionTable id="DecisionTable_0818boj" hitPolicy="COLLECT">
+      <input id="Input_1" label="isIp" camunda:inputVariable="isIp">
+        <inputExpression id="InputExpression_1" typeRef="boolean">
+          <text>isIp</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0n0k2to" label="isResident" camunda:inputVariable="isResident">
+        <inputExpression id="LiteralExpression_0dqjb2m" typeRef="boolean">
+          <text>isResident</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1lvym7k" label="region" camunda:inputVariable="region">
+        <inputExpression id="LiteralExpression_0asg3jz" typeRef="integer">
+          <text>region</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_19npznx" label="capital" camunda:inputVariable="capital">
+        <inputExpression id="LiteralExpression_1h4s8b1" typeRef="number">
+          <text>capital</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="rejected" name="rejected" typeRef="boolean" />
+      <output id="OutputClause_0o18wl6" label="reason" name="reason" typeRef="string" />
+      <rule id="DecisionRule_0571b18">
+        <inputEntry id="UnaryTests_0ouhm39">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1vcwh6i">
+          <text>any</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_19bb3o5">
+          <text>any</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1prjewu">
+          <text>any</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1emhzlk">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0hxq2zh">
+          <text>"Individual entrepreneur"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1xnvtyv">
+        <inputEntry id="UnaryTests_172wxcx">
+          <text>any</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1epj18e">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1wom23x">
+          <text>any</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_04zsq5s">
+          <text>any</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_173uvhj">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_005m6hw">
+          <text>"Not Russian Federation resident"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0kvxgi7">
+        <inputEntry id="UnaryTests_0hl3a7l">
+          <text>any</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_135bj79">
+          <text>any</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1l7f2hw">
+          <text>24</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qy3jty">
+          <text>any</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1d9lxq2">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_0wxhimb">
+          <text>"24 - Krasnodar region is not allowed"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_0c0tl7z">
+        <inputEntry id="UnaryTests_06cb3d6">
+          <text>any</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0s0qnok">
+          <text>any</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1a992cl">
+          <text>any</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0qq3t7v">
+          <text>&lt;5000000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_015sd53">
+          <text>true</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_1h2ek9w">
+          <text>"Capital must be greater than 5_000_000"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1oagiik">
+        <inputEntry id="UnaryTests_1yjq3mv">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_11493bz">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_16ndzxd">
+          <text>!= 24</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0barq48">
+          <text>&gt;=5000000</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0jyo4tg">
+          <text>false</text>
+        </outputEntry>
+        <outputEntry id="LiteralExpression_068brtz">
+          <text></text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+</definitions>
