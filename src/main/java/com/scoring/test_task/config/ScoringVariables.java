@@ -11,7 +11,7 @@ public class ScoringVariables {
     private String isResidentKey;
     private String regionKey;
     private String capitalKey;
-    private String rejectedKey;
+    private String isRejectedKey;
     private String reasonKey;
     private String nonResidentPrefix;
     private int ipInnLength;

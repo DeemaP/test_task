@@ -1,6 +1,7 @@
 package com.scoring.test_task.dto;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 import lombok.Data;
 
 import javax.validation.constraints.DecimalMin;
@@ -11,6 +12,7 @@ import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
 
 @Data
+@Builder
 public class ScoringRequestDto {
 
     @Schema(description = "Organization full name", example = "OOO roga kopyta")

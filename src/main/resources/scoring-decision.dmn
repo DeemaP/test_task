@@ -22,7 +22,7 @@
           <text>capital</text>
         </inputExpression>
       </input>
-      <output id="Output_1" label="rejected" name="rejected" typeRef="boolean" />
+      <output id="Output_1" label="isRejected" name="isRejected" typeRef="boolean" />
       <output id="OutputClause_0o18wl6" label="reason" name="reason" typeRef="string" />
       <rule id="DecisionRule_0571b18">
         <inputEntry id="UnaryTests_0ouhm39">

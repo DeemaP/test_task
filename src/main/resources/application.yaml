@@ -37,7 +37,7 @@ scoring-variables:
   is-resident-key: "isResident"
   region-key: "region"
   capital-key: "capital"
-  rejected-key: "rejected"
+  isRejected-key: "isRejected"
   reason-key: "reason"
   non-resident-prefix: "9909"
   ip-inn-length: 12

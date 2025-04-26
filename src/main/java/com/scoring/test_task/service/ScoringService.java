@@ -72,7 +72,7 @@ public class ScoringService {
         List<String> rejectReasons = new ArrayList<>();
 
         boolean isRejected = results.stream()
-                .anyMatch(result -> result.get(properties.getRejectedKey()).equals(true));
+                .anyMatch(result -> result.get(properties.getIsRejectedKey()).equals(true));
 
         if (isRejected) {
             rejectReasons = results.stream()
@@ -85,16 +85,6 @@ public class ScoringService {
                 .isRejected(isRejected)
                 .rejectReasons(rejectReasons)
                 .build();
-    }
-
-    private void saveScoringResult(ScoringResponseDto responseDto) {
-        String orgName = responseDto.getOrgName();
-        log.debug("Saving scoring result in db for '{}'", orgName);
-        scoringRepository.save(ScoringResult.builder()
-                .orgName(orgName)
-                .isRejected(responseDto.getIsRejected())
-                .rejectReasons(responseDto.getRejectReasons())
-                .build());
     }
 
     private boolean isIp(String inn) {
@@ -111,5 +101,15 @@ public class ScoringService {
                 .isRejected(scoringResult.getIsRejected())
                 .rejectReasons(scoringResult.getRejectReasons())
                 .build();
+    }
+
+    private void saveScoringResult(ScoringResponseDto responseDto) {
+        String orgName = responseDto.getOrgName();
+        log.debug("Saving scoring result in db for '{}'", orgName);
+        scoringRepository.save(ScoringResult.builder()
+                .orgName(orgName)
+                .isRejected(responseDto.getIsRejected())
+                .rejectReasons(responseDto.getRejectReasons())
+                .build());
     }
 }

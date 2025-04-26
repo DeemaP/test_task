@@ -18,7 +18,7 @@ public class OpenApiConfig {
                                 "\n\nTest project for Elfin company.")
                         .version("v1.0")
                         .contact(new Contact()
-                                .name("Deema")
+                                .name("Dmitrii Pazinich")
                                 .email("pazinich.d@yandex.ru")
                                 .url("https://github.com/deemap")));
     }

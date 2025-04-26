@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   elasticsearch:
     image: bitnami/elasticsearch:7.17.26
@@ -9,12 +7,18 @@ services:
       - ES_JAVA_OPTS=-Xms512m -Xmx512m
     ports:
       - "9200:9200"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:9200" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
 
   app:
     build: .
     container_name: scoring-app
     depends_on:
-      - elasticsearch
+      elasticsearch:
+        condition: service_healthy
     ports:
       - "8080:8080"
     environment:
