@@ -3,10 +3,10 @@ package com.scoring.test_task.dto;
 import lombok.Data;
 
 import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
-import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 
 @Data
@@ -19,7 +19,7 @@ public class ScoringRequestDto {
     @Pattern(regexp = "\\d{10}|\\d{12}", message = "INN must contain 10 or 12 digits.")
     private String inn;
 
-    @Positive(message = "Organization region code must be greater than 0.")
+    @Min(value = 1, message = "Organization region code must be greater than 0.")
     private int region;
 
     @NotNull(message = "Organization capital must not be null.")

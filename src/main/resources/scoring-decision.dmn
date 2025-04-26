@@ -29,13 +29,13 @@
           <text>true</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1vcwh6i">
-          <text>any</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_19bb3o5">
-          <text>any</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1prjewu">
-          <text>any</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1emhzlk">
           <text>true</text>
@@ -46,16 +46,16 @@
       </rule>
       <rule id="DecisionRule_1xnvtyv">
         <inputEntry id="UnaryTests_172wxcx">
-          <text>any</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1epj18e">
           <text>false</text>
         </inputEntry>
         <inputEntry id="UnaryTests_1wom23x">
-          <text>any</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_04zsq5s">
-          <text>any</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_173uvhj">
           <text>true</text>
@@ -66,16 +66,16 @@
       </rule>
       <rule id="DecisionRule_0kvxgi7">
         <inputEntry id="UnaryTests_0hl3a7l">
-          <text>any</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_135bj79">
-          <text>any</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1l7f2hw">
           <text>24</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0qy3jty">
-          <text>any</text>
+          <text></text>
         </inputEntry>
         <outputEntry id="LiteralExpression_1d9lxq2">
           <text>true</text>
@@ -86,13 +86,13 @@
       </rule>
       <rule id="DecisionRule_0c0tl7z">
         <inputEntry id="UnaryTests_06cb3d6">
-          <text>any</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0s0qnok">
-          <text>any</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_1a992cl">
-          <text>any</text>
+          <text></text>
         </inputEntry>
         <inputEntry id="UnaryTests_0qq3t7v">
           <text>&lt;5000000</text>
@@ -112,7 +112,7 @@
           <text>true</text>
         </inputEntry>
         <inputEntry id="UnaryTests_16ndzxd">
-          <text>!= 24</text>
+          <text>not(24)</text>
         </inputEntry>
         <inputEntry id="UnaryTests_0barq48">
           <text>&gt;=5000000</text>

@@ -19,7 +19,7 @@ import javax.validation.Valid;
 @Slf4j
 @RequiredArgsConstructor
 @RequestMapping("/scoring")
-@Tag(name = "Organization scoring", description = "Automated  scoring with DMN by Camunda")
+@Tag(name = "Organization scoring", description = "Automated scoring with DMN by Camunda")
 public class ScoringController {
     public final ScoringService scoringService;
 
