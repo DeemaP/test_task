@@ -146,7 +146,7 @@ class ScoringServiceTest {
     void testIsIpTrue() {
         when(properties.getIpInnLength()).thenReturn(12);
 
-        boolean result = ReflectionTestUtils.invokeMethod(scoringService, "isIp", "770708389300");
+        boolean result = Boolean.TRUE.equals(ReflectionTestUtils.invokeMethod(scoringService, "isIp", "770708389300"));
         assertThat(result).isTrue();
     }
 
@@ -154,7 +154,7 @@ class ScoringServiceTest {
     void testIsIpFalse() {
         when(properties.getIpInnLength()).thenReturn(12);
 
-        boolean result = ReflectionTestUtils.invokeMethod(scoringService, "isIp", "7707083893");
+        boolean result = Boolean.TRUE.equals(ReflectionTestUtils.invokeMethod(scoringService, "isIp", "7707083893"));
         assertThat(result).isFalse();
     }
 
@@ -162,7 +162,7 @@ class ScoringServiceTest {
     void testIsResidentTrue() {
         when(properties.getNonResidentPrefix()).thenReturn("9909");
 
-        boolean result = ReflectionTestUtils.invokeMethod(scoringService, "isResident", "7707083893");
+        boolean result = Boolean.TRUE.equals(ReflectionTestUtils.invokeMethod(scoringService, "isResident", "7707083893"));
         assertThat(result).isTrue();
     }
 
@@ -170,7 +170,7 @@ class ScoringServiceTest {
     void testIsResidentFalse() {
         when(properties.getNonResidentPrefix()).thenReturn("9909");
 
-        boolean result = ReflectionTestUtils.invokeMethod(scoringService, "isResident", "9909123456");
+        boolean result = Boolean.TRUE.equals(ReflectionTestUtils.invokeMethod(scoringService, "isResident", "9909123456"));
         assertThat(result).isFalse();
     }
 
