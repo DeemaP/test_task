@@ -3,12 +3,15 @@ package com.scoring.test_task.service;
 import com.scoring.test_task.config.ScoringVariables;
 import com.scoring.test_task.dto.ScoringRequestDto;
 import com.scoring.test_task.dto.ScoringResponseDto;
+import com.scoring.test_task.model.ScoringResult;
+import com.scoring.test_task.repository.ScoringRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.camunda.bpm.dmn.engine.DmnDecisionTableResult;
 import org.camunda.bpm.engine.DecisionService;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,6 +24,7 @@ import java.util.stream.Collectors;
 public class ScoringService {
     private final DecisionService decisionService;
     private final ScoringVariables properties;
+    private final ScoringRepository scoringRepository;
 
     public ScoringResponseDto scoreOrg(ScoringRequestDto requestDto) {
         String orgName = requestDto.getOrgName();
@@ -28,14 +32,25 @@ public class ScoringService {
         DmnDecisionTableResult dmnResult = decisionService.evaluateDecisionTableByKey(
                 properties.getDmnKey(), createDmnInput(requestDto));
         ScoringResponseDto responseDto = createScoringResponseDto(dmnResult, orgName);
+        saveScoringResult(responseDto);
         log.info("Finished scoring for '{}'", orgName);
 
         return responseDto;
     }
 
-    public void saveScoringResult(ScoringResponseDto responseDto) {
-        log.debug("Saving scoring result in db for '{}'", responseDto.getOrgName());
+    public List<ScoringResponseDto> findScoringResultByOrgName(String orgName) {
+        log.info("Searching all scoring results in db for '{}'", orgName);
 
+        List<ScoringResponseDto> result = scoringRepository.findByOrgName(orgName).stream()
+                .map(this::mapScoringResultToResponse)
+                .collect(Collectors.toList());
+
+        if (result.isEmpty()) {
+            log.debug("No scoring results found for '{}' in db.", orgName);
+            throw new EntityNotFoundException(String.format("No scoring results found for %s in db.", orgName));
+        }
+
+        return result;
     }
 
     private Map<String, Object> createDmnInput(ScoringRequestDto requestDto) {
@@ -56,10 +71,10 @@ public class ScoringService {
         List<Map<String, Object>> results = dmnResult.getResultList();
         List<String> rejectReasons = new ArrayList<>();
 
-        boolean rejected = results.stream()
+        boolean isRejected = results.stream()
                 .anyMatch(result -> result.get(properties.getRejectedKey()).equals(true));
 
-        if (rejected) {
+        if (isRejected) {
             rejectReasons = results.stream()
                     .map(result -> (String) result.get(properties.getReasonKey()))
                     .collect(Collectors.toList());
@@ -67,9 +82,19 @@ public class ScoringService {
 
         return ScoringResponseDto.builder()
                 .orgName(orgName)
-                .rejected(rejected)
+                .isRejected(isRejected)
                 .rejectReasons(rejectReasons)
                 .build();
+    }
+
+    private void saveScoringResult(ScoringResponseDto responseDto) {
+        String orgName = responseDto.getOrgName();
+        log.debug("Saving scoring result in db for '{}'", orgName);
+        scoringRepository.save(ScoringResult.builder()
+                .orgName(orgName)
+                .isRejected(responseDto.getIsRejected())
+                .rejectReasons(responseDto.getRejectReasons())
+                .build());
     }
 
     private boolean isIp(String inn) {
@@ -78,5 +103,13 @@ public class ScoringService {
 
     private boolean isResident(String inn) {
         return !inn.startsWith(properties.getNonResidentPrefix());
+    }
+
+    private ScoringResponseDto mapScoringResultToResponse(ScoringResult scoringResult) {
+        return ScoringResponseDto.builder()
+                .orgName(scoringResult.getOrgName())
+                .isRejected(scoringResult.getIsRejected())
+                .rejectReasons(scoringResult.getRejectReasons())
+                .build();
     }
 }
