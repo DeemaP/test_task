@@ -14,9 +14,7 @@ services:
       retries: 10
 
   scoring-app:
-    build:
-      context: .
-    image: scoring-app:latest
+    image: deemap/test-task:latest
     container_name: scoring-app
     depends_on:
       elasticsearch:

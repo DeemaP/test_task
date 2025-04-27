@@ -28,16 +28,10 @@ git clone https://github.com/DeemaP/test_task.git
 cd test_task
 ```
 
-### 2. Build the Project
+### 2. Start the Application
 
 ```bash
-mvn clean package
-```
-
-### 3. Start the Application
-
-```bash
-docker-compose up --build
+docker-compose up
 ```
 
 ## Accessing Services
