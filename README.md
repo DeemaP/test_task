@@ -24,7 +24,7 @@ A service for automated organization scoring based on Camunda DMN decisions, wit
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-repo/test_task.git
+git clone https://github.com/DeemaP/test_task.git
 cd test_task
 ```
 
