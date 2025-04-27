@@ -17,7 +17,6 @@ A service for automated organization scoring based on Camunda DMN decisions, wit
 ## Prerequisites
 
 - Docker and Docker Compose installed
-- Maven installed
 
 ## Quick Start
 
