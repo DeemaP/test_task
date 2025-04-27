@@ -18,14 +18,15 @@ spring:
       enabled: false
 
   elasticsearch:
-    uris: http://localhost:9200
+    uris: http://elasticsearch:9200
 
 camunda:
   bpm:
     admin-user:
       id: username
       password: password
-      first-name: TestUser
+      first-name: Test
+      last-name: User
     database:
       type: h2
     job-execution:

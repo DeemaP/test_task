@@ -13,8 +13,10 @@ services:
       timeout: 5s
       retries: 10
 
-  app:
-    build: .
+  scoring-app:
+    build:
+      context: .
+    image: scoring-app:latest
     container_name: scoring-app
     depends_on:
       elasticsearch:
